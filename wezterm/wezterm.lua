@@ -2,11 +2,29 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-config.default_cursor_style = "SteadyBlock"
 config.automatically_reload_config = true
+config.check_for_updates = true
+config.check_for_updates_interval_seconds = 86400
+
+config.default_cursor_style = "SteadyBlock"
 config.window_decorations = "RESIZE"
+
 config.font_size = 14
 config.font = wezterm.font("SF Mono")
+config.color_scheme = 'Tokyo Night Moon'
+
+-- https://wezfurlong.org/wezterm/config/lua/config/window_padding.html
+config.window_padding = {
+	left = 4,
+	right = 4,
+	top = 1,
+	bottom = 1,
+}
+
+-- https://wezfurlong.org/wezterm/config/appearance.html
+config.window_background_opacity = 0.7 -- 0.4
+config.text_background_opacity = 1.0   -- 0.9
+
 
 config.keys = {
 	-- Split horizontally (right)
