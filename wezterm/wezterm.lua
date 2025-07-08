@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local tabs = require("utils.tabs")
 
 local config = wezterm.config_builder()
 
@@ -22,9 +23,11 @@ config.window_padding = {
 }
 
 -- https://wezfurlong.org/wezterm/config/appearance.html
-config.window_background_opacity = 0.7 -- 0.4
-config.text_background_opacity = 1.0   -- 0.9
+config.window_background_opacity = 0.85 -- 0.4
+config.text_background_opacity = 1.0    -- 0.9
 
+-- Apply tabs style
+tabs(config)
 
 config.keys = {
 	-- Split horizontally (right)
@@ -62,5 +65,6 @@ config.keys = {
 		action = wezterm.action.ActivatePaneDirection "Down",
 	},
 }
+
 
 return config
