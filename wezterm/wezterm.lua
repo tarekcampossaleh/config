@@ -4,14 +4,9 @@ local config = wezterm.config_builder()
 
 config.default_cursor_style = "SteadyBlock"
 config.automatically_reload_config = true
-local wezterm = require("wezterm")
-
-local config = wezterm.config_builder()
-
-config.default_cursor_style = "SteadyBlock"
-config.automatically_reload_config = true
 config.window_decorations = "RESIZE"
-config.font_size = 16
+config.font_size = 14
+config.font = wezterm.font("SF Mono")
 
 config.keys = {
 	-- Split horizontally (right)
