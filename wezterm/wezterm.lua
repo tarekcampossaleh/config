@@ -1,5 +1,7 @@
 local wezterm = require("wezterm")
 local tabs = require("utils.tabs")
+-- TODO: Move to a offline local version
+local workspace_switcher = wezterm.plugin.require("https://github.com/MLFlexer/smart_workspace_switcher.wezterm")
 
 local config = wezterm.config_builder()
 
@@ -28,6 +30,9 @@ config.text_background_opacity = 1.0    -- 0.9
 
 -- Apply tabs style
 tabs(config)
+
+workspace_switcher.apply_to_config(config)
+workspace_switcher.zoxide_path = "/opt/homebrew/bin/zoxide"
 
 config.keys = {
 	-- Split horizontally (right)
@@ -64,7 +69,18 @@ config.keys = {
 		mods = "CMD",
 		action = wezterm.action.ActivatePaneDirection "Down",
 	},
-}
+
+	-- Workspace switcher
+	{
+		key = "s",
+		mods = "CMD",
+		action = workspace_switcher.switch_workspace(),
+	},
+	{
+		key = "S",
+		mods = "CMD",
+		action = workspace_switcher.switch_to_prev_workspace(),
+	} }
 
 
 return config

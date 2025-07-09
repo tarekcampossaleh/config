@@ -44,6 +44,13 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_wid
   }
 end)
 
+wezterm.on("update-right-status", function(window, pane)
+  window:set_right_status(wezterm.format {
+    { Text = window:active_workspace() },
+    { Attribute = { Background = wezterm.colors.statusbar.background } },
+  })
+end)
+
 ---@param wezterm_config Config The Wezterm configuration table to modify
 ---@param opts? table Optional configuration overrides
 ---@return nil
